@@ -1,0 +1,53 @@
+{% extends 'frontend/layout/layout.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+{#            <form>#}
+                {{ form_start(form) }}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_label(form.surname) }}
+                        {{ form_widget(form.surname) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form_label(form.phone) }}
+                        {{ form_widget(form.phone) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_label(form.address) }}
+                        {{ form_widget(form.address) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form_label(form.country) }}
+                        {{ form_widget(form.country) }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        {{ form_label(form.city) }}
+                        {{ form_widget(form.city) }}
+                    </div>
+                    <div class="form-group col-md-2">
+                        {{ form_label(form.zipcode) }}
+                        {{ form_widget(form.zipcode) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.avatar) }}
+                    {{ form_widget(form.avatar) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                {{ form_end(form) }}
+{#            </form>#}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+{% endblock %}

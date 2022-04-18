@@ -1,0 +1,40 @@
+{% extends 'frontend/layout/layout.html.twig' %}
+
+{% block body %}
+
+    <div class="modal-body px-9 pb-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-log-in" role="tabpanel" aria-labelledby="nav-log-in-tab">
+                <h4 class="fs-34 text-center mb-6">Log in</h4>
+                <p class="text-center fs-16 mb-7">Don’t have an account yet? <a href="{{ path('app_register') }}" class="text-secondary border-bottom text-decoration-none">Register</a> for free</p>
+                <form class="login-form-wrapper" id="login-form" method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.name }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+                    <label for="UserName" class="form-label">Email *</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="UserName" class="form-control" autocomplete="email" required autofocus>
+                    <label for="password" class="form-label mt-5">Password *</label>
+                    <input type="password" name="password" id="password" class="form-control border-0" autocomplete="current-password" required>
+                    <div class="d-flex align-items-center justify-content-between mt-5 mb-4">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="staySignedIn">
+                            <label class="custom-control-label text-body" for="staySignedIn"> Remember me</label>
+                        </div>
+                        <a class="text-secondary" href="#">Forgot your password?</a>
+                    </div>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+                    <button type="submit" value="Login" class="btn btn-secondary btn-block bg-hover-primary border-hover-primary">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

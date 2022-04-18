@@ -1,0 +1,88 @@
+{% extends 'frontend/layout/layout.html.twig' %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <div style="max-width: 340px;">
+                <div class="card border-0 hover-change-image">
+                    <div class="position-relative overflow-hidden">
+                        <img class="card-img" src="{{ asset('frontend/images/our-team-01.jpg') }}" alt="our-team-01">
+                        <ul class="list-inline text-center card-img-overlay top-auto mb-0 py-2 bg-border-color hover-image hover-bottom-to-top">
+                            <li class="list-inline-item mr-6"><a href="#" class="fs-18"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item mr-6"><a href="#" class="fs-18"><i class="fab fa-facebook"></i></a></li>
+                            <li class="list-inline-item mr-6"><a href="#" class="fs-18"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="fs-18"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body px-0 text-center">
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Active</span>
+                        </div>
+                        <h4 class="fs-20">{{ app.user.name }} {{ app.user.surname }}</h4>
+                        {% if app.user.status == 0 %}
+                            <p class="card-text">
+                                <span class="badge badge-danger">Passive</span>
+                            </p>
+                        {% else %}
+                            <p class="card-text">
+                                <span class="badge badge-success">Active</span>
+                            </p>
+                        {% endif %}
+                        <a href="{{ path('create_ticket') }}" class="btn btn-success btn-sm card-link">Create Ticket</a>
+                        <a href="{{ path('user_ticket_list') }}" class="btn btn-secondary btn-sm card-link mt-2">My Ticket List</a>
+                        <a data-toggle="modal" data-target="#logoutModal" class="btn btn-danger btn-sm card-link">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                </div>
+
+
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <!-- Home Page -->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Home Page</div>
+                <!-- Profile Info -->
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="table-responsive mb-md-7">
+
+                    </div>
+                </div>
+                <!-- Order Page -->
+                <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">Order Page</div>
+                <!-- Order Track -->
+                <div class="tab-pane fade" id="nav-order-track" role="tabpanel" aria-labelledby="nav-order-track-tab">Order Track</div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to sign out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="{{ path('app_logout') }}"><button type="button" class="btn btn-primary">Yes, Logout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

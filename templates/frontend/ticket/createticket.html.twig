@@ -1,0 +1,47 @@
+{% extends 'frontend/layout/layout.html.twig' %}
+{% block body %}
+
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-body">
+                <!-- Bootstrap Validation -->
+                <div class="col-md-12 col-12">
+                    <div class="card">
+                        <div class="user-avatar-section">
+                            <div class="d-flex align-items-center flex-column">
+                                <div class="card-header">
+                                    <h4 class="card-title">Create Ticket</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {{ form_start(form) }}
+                            <div class="mb-1">
+                                {{ form_label(form.category) }}<br>
+                                {{ form_widget(form.category) }}
+                            </div>
+                            <input type="hidden" name="status" value="0">
+                            <div class="mb-1">
+                                {{ form_label(form.ticket_content) }}<br>
+                                {{ form_widget(form.ticket_content) }}
+                            </div>
+                            <div class="mb-1">
+
+                                {{ form_label(form.ticket_priority) }}<br>
+                                {{ form_widget(form.ticket_priority) }}
+                            </div>
+
+                            <input type="hidden" name="user" value="{{ user }}">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            {{ form_end(form) }}
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

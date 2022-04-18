@@ -1,0 +1,43 @@
+{% extends 'frontend/layout/layout.html.twig' %}
+
+{#{% block title %}Register{% endblock %}#}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="modal-body px-9 pb-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                <h4 class="fs-34 text-center mb-6">Register</h4>
+                <p class="text-center fs-16 mb-7">Already have an account? <a href="{{ path('app_login') }}" class="text-secondary border-bottom text-decoration-none">Log in</a></p>
+                {{ form_start(registrationForm) }}
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <label for="email" class="form-label">Email address *</label>
+                {{ form_widget(registrationForm.email) }}
+                <label for="regpassword" class="form-label">Password *</label>
+                {{ form_widget(registrationForm.plainPassword) }}
+                <label for="regpassword" class="form-label">Confirm Password *</label>
+                {{ form_widget(registrationForm.confirmPassword) }}
+                <div class="custom-control custom-checkbox mt-4 mb-5 mr-xl-6">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_label(registrationForm.agreeTerms) }}
+                </div>
+                <button type="submit" value="Login" class="btn btn-secondary btn-block bg-hover-primary border-hover-primary">Register</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
